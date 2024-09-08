@@ -5,13 +5,13 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun PokemonDetailScreen() {
+fun PokemonDetailScreen(id: String) {
     // placeholder text
-    Text("Pokemon Detail Screen")
+    Text("Pokemon Detail Screen: $id")
 }
 
 @Preview
 @Composable
 fun PokemonDetailScreenPreview() {
-    PokemonDetailScreen()
+    PokemonDetailScreen("")
 }

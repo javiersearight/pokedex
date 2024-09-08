@@ -2,15 +2,22 @@ package com.javy.pokedex.data.repository
 
 import com.javy.pokedex.data.mock.PokemonMockDataSource
 import com.javy.pokedex.model.ui.Pokemon
+import com.javy.pokedex.model.ui.Type
 
 class PokemonRepository {
     private val mockDataSource = PokemonMockDataSource()
 
-    fun getPokemonList(): List<Pokemon> {
-        return mockDataSource.getPokemonList()
-    }
+    fun pokemon(): List<Pokemon> =
+        mockDataSource.pokemon()
 
-    fun getPokemonById(id: Int): Pokemon? {
-        return mockDataSource.getPokemonById(id)
-    }
+
+    fun pokemonById(id: Int): Pokemon? =
+        mockDataSource.pokemonById(id)
+
+
+    fun types(): List<Type> =
+        mockDataSource.types()
+
+    fun pokemonByType(type: Type): List<Pokemon> =
+        mockDataSource.pokemonByType(type)
 }
