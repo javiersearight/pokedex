@@ -21,7 +21,7 @@ object RESTModule {
     @Singleton
     @Provides
     fun provideHttpClient(@ApplicationContext context: Context): OkHttpClient {
-        val cacheSize = (5 * 1024 * 1024).toLong() // 5 MB cache size, because we like to keep things moderate
+        val cacheSize = (5 * 1024 * 1024).toLong()
         val cache = Cache(context.cacheDir, cacheSize)
 
         return OkHttpClient

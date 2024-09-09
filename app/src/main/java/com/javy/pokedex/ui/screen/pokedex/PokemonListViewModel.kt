@@ -42,6 +42,9 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                 }
             }.onFailure {
                 val errorMessage = it.message
+                _uiState.update {
+                    it.copy(errorMessage = errorMessage, isLoading = false)
+                }
             }
         }
     }
@@ -64,6 +67,9 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                 }
             }.onFailure {
                 val errorMessage = it.message
+                _uiState.update {
+                    it.copy(errorMessage = errorMessage, isLoading = false)
+                }
             }
         }
     }
@@ -81,6 +87,9 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                 }
             }.onFailure {
                 val errorMessage = it.message
+                _uiState.update {
+                    it.copy(errorMessage = errorMessage, isLoading = false)
+                }
             }
         }
     }
@@ -118,6 +127,9 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                 }
             }.onFailure {
                 val errorMessage = it.message
+                _uiState.update {
+                    it.copy(errorMessage = errorMessage, isLoading = false)
+                }
             }
         }
     }

@@ -29,7 +29,7 @@ fun PokedexScreen(
                 title = {
                     Text(
                         text = "Pokedex",
-                                color = Yellow
+                        color = Yellow
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -37,7 +37,8 @@ fun PokedexScreen(
                 ),
                 modifier = Modifier
                     .background(Red)
-            ) },
+            )
+        },
         contentWindowInsets = WindowInsets(0.dp)
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
@@ -49,5 +50,5 @@ fun PokedexScreen(
 @Preview
 @Composable
 fun PokedexScreenPreview() {
-    PokedexScreen{}
+    PokedexScreen {}
 }
