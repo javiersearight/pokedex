@@ -130,7 +130,7 @@ data class PokemonListUIState(
     val isLoading: Boolean = false
 ) {
     val isEmpty: Boolean
-        get() = pokemon.isEmpty()
+        get() = pokemon.isEmpty() && !isLoading
 
     val hasError: Boolean
         get() = errorMessage != null

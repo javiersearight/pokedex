@@ -12,10 +12,13 @@ import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.CachePolicy
+import coil.request.ImageRequest
 import com.javy.pokedex.R
 import com.javy.pokedex.model.ui.Pokemon
 import com.javy.pokedex.model.ui.Stat
@@ -50,11 +53,18 @@ fun PokemonCard(
                         modifier = modifier
                     )
                 } else {
+                    val context = LocalContext.current
+                    val request = ImageRequest.Builder(context)
+                        .data(pokemon.imageUrl)
+                        .placeholder(R.drawable.logo_pokemon)
+                        .memoryCacheKey(pokemon.imageUrl)
+                        .diskCachePolicy(CachePolicy.ENABLED)
+                        .memoryCachePolicy(CachePolicy.ENABLED)
+                        .build()
                     AsyncImage(
-                        model = pokemon.imageUrl,
+                        model = request,
                         contentDescription = pokemon.name,
                         contentScale = ContentScale.Fit,
-                        placeholder = painterResource(id = R.drawable.logo_pokemon),
                         modifier = modifier
                     )
                 }

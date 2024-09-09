@@ -1,12 +1,15 @@
 package com.javy.pokedex.ui.screen.pokemondetail
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.javy.pokedex.data.repository.PokemonRepository
 import com.javy.pokedex.model.ui.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,9 +27,16 @@ class PokemonDetailViewModel @Inject constructor(
     }
 
     fun fetchPokemonById(id: String) {
-        val pokemon = pokemonRepository.pokemonById(id)
-        _uiState.update {
-            it.copy(pokemon = pokemon, isLoading = false)
+        viewModelScope.launch {
+            runCatching {
+                pokemonRepository.pokemonById(id)
+            }.onSuccess { pokemon ->
+                _uiState.update {
+                    it.copy(pokemon = pokemon, isLoading = false)
+                }
+            }.onFailure {
+                val errorMessage = it.message
+            }
         }
     }
 }

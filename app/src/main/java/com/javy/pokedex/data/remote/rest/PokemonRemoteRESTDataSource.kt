@@ -3,6 +3,7 @@ package com.javy.pokedex.data.remote.rest
 import com.javy.pokedex.com.javy.pokedex.data.remote.rest.model.Item
 import com.javy.pokedex.data.remote.rest.model.PokemonResult
 import com.javy.pokedex.model.ui.Pokemon
+import com.javy.pokedex.model.ui.Stat
 import com.javy.pokedex.model.ui.Type
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -56,6 +57,12 @@ class PokemonRemoteRESTDataSource @Inject constructor(private val apiService: Po
             emit(pokemon ?: emptyList())
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun pokemonById(id: String): Pokemon? {
+        val response = apiService.pokemonById(id)
+        val pokemonResult = response.body()
+        return pokemonResult?.pokemon()
+    }
 }
 
 private fun Item.pokemon(): Pokemon {
@@ -65,9 +72,9 @@ private fun Item.pokemon(): Pokemon {
 
 private fun PokemonResult.pokemon(): Pokemon {
     return Pokemon(
-        id ?: "",
-        name ?: "",
-        order?.let {
+        id = id ?: "",
+        name = name ?: "",
+        number = order?.let {
             val number = when (it.length) {
                 1 -> "00$it"
                 2 -> "0$it"
@@ -75,10 +82,16 @@ private fun PokemonResult.pokemon(): Pokemon {
             }
             "#$number"
         } ?: "",
-        types?.map { Type(name = it.type?.name ?: "") } ?: emptyList(),
-        height = "$height M",
-        weight = "$weight KG",
-        stats = emptyList(),
+        description = "Base Experience is $base_experience",
+        types = types?.map { Type(name = it.type?.name ?: "") } ?: emptyList(),
+        height = "${height?.toFloat()?.div(10)} M",
+        weight = "${weight?.toFloat()?.div(10)} KG",
+        stats = stats?.map {
+            Stat(
+                name = it.stat?.name ?: "",
+                value = it.base_stat ?: 0
+            )
+        } ?: emptyList(),
         imageUrl = sprites?.front_default ?: ""
     )
 }

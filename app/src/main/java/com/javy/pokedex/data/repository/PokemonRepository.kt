@@ -1,6 +1,5 @@
 package com.javy.pokedex.data.repository
 
-import com.javy.pokedex.data.mock.PokemonMockDataSource
 import com.javy.pokedex.data.remote.rest.PokemonRemoteRESTDataSource
 import com.javy.pokedex.model.ui.Pokemon
 import com.javy.pokedex.model.ui.Type
@@ -10,7 +9,6 @@ import javax.inject.Inject
 
 @ActivityRetainedScoped
 class PokemonRepository @Inject constructor(private val dataSource: PokemonRemoteRESTDataSource) {
-    private val mockDataSource = PokemonMockDataSource()
 
     suspend fun pokemon(): Flow<List<Pokemon>> =
         dataSource.getPokemon()
@@ -24,6 +22,6 @@ class PokemonRepository @Inject constructor(private val dataSource: PokemonRemot
     suspend fun fetchPokemonByType(id: String): Flow<List<Pokemon>> =
         dataSource.pokemonByType(id)
 
-    fun pokemonById(id: String): Pokemon? =
-        mockDataSource.pokemonById(id)
+    suspend fun pokemonById(id: String): Pokemon? =
+        dataSource.pokemonById(id)
 }

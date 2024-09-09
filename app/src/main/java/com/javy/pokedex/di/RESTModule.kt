@@ -1,10 +1,13 @@
 package com.javy.pokedex.di
 
+import android.content.Context
 import com.javy.pokedex.data.remote.rest.PokemonApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -17,9 +20,13 @@ object RESTModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(): OkHttpClient {
+    fun provideHttpClient(@ApplicationContext context: Context): OkHttpClient {
+        val cacheSize = (5 * 1024 * 1024).toLong() // 5 MB cache size, because we like to keep things moderate
+        val cache = Cache(context.cacheDir, cacheSize)
+
         return OkHttpClient
             .Builder()
+            .cache(cache)
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()

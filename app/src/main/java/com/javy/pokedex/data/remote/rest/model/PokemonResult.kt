@@ -1,6 +1,7 @@
 package com.javy.pokedex.data.remote.rest.model
 
 import com.javy.pokedex.com.javy.pokedex.data.remote.rest.model.Sprites
+import com.javy.pokedex.com.javy.pokedex.data.remote.rest.model.StatResult
 import com.javy.pokedex.com.javy.pokedex.data.remote.rest.model.TypeResult
 
 data class PokemonResult(
@@ -8,7 +9,9 @@ data class PokemonResult(
     val name: String?,
     val order: String?,
     val types: List<TypeResult>?,
-    val height: String?,
-    val weight: String?,
-    val sprites: Sprites?
+    val height: Int?,
+    val weight: Int?,
+    val sprites: Sprites?,
+    val stats: List<StatResult>?,
+    val base_experience: Int?
 )
