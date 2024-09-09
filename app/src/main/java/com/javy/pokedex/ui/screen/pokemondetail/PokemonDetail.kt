@@ -1,12 +1,10 @@
 package com.javy.pokedex.ui.screen.pokemondetail
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -73,7 +71,8 @@ fun PokemonDetail(
                 ) {
                     Text(
                         text = "Description:",
-                        modifier = Modifier.padding(start = 16.dp))
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Text(
                         text = it.description,
                         modifier = Modifier.padding(start = 16.dp)
@@ -81,7 +80,8 @@ fun PokemonDetail(
                 }
                 Text(
                     text = "Stats: ",
-                    modifier = Modifier.padding(start = 24.dp))
+                    modifier = Modifier.padding(start = 24.dp)
+                )
                 for (stat in it.stats) {
                     Row(
                         modifier = Modifier
