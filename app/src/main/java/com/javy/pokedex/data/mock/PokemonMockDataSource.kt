@@ -16,14 +16,14 @@ class PokemonMockDataSource {
             squirtle(), pikachu(), evee(), bulbosaur(), charmander(), squirtle(), clefairy()
         )
 
-    fun pokemonById(id: Int): Pokemon? =
+    fun pokemonById(id: String): Pokemon? =
         when (id) {
-            1 -> bulbosaur()
-            2 -> charmander()
-            3 -> squirtle()
-            4 -> pikachu()
-            5 -> evee()
-            6 -> clefairy()
+            "1" -> bulbosaur()
+            "2" -> charmander()
+            "3" -> squirtle()
+            "4" -> pikachu()
+            "5" -> evee()
+            "6" -> clefairy()
             else -> null
         }
 

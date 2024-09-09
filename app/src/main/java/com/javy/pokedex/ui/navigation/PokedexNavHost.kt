@@ -6,7 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import com.javy.pokedex.ui.navigation.Route.POKEDEX_SCREEN
 import com.javy.pokedex.ui.navigation.Route.POKEMON_DETAIL_SCREEN
 import com.javy.pokedex.ui.screen.pokedex.PokedexScreen
-import com.javy.pokedex.ui.screen.PokemonDetailScreen
+import com.javy.pokedex.ui.screen.pokemondetail.PokemonDetailScreen
 
 object Route {
     const val POKEDEX_SCREEN = "pokedex"
@@ -34,7 +34,12 @@ fun PokedexNavHost() {
         }
         slideInOutComposable(route = POKEMON_DETAIL_SCREEN) {
             val id = it.arguments?.getString("id") ?: ""
-            PokemonDetailScreen(id = id)
+            PokemonDetailScreen(
+                id = id,
+                navigateBack = {
+                    navController.navigateUp()
+                }
+            )
         }
     }
 }

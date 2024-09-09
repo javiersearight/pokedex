@@ -11,7 +11,7 @@ class PokemonRepository {
         mockDataSource.pokemon()
 
 
-    fun pokemonById(id: Int): Pokemon? =
+    fun pokemonById(id: String): Pokemon? =
         mockDataSource.pokemonById(id)
 
 
