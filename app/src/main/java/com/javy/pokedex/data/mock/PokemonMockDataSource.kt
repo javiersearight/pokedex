@@ -28,12 +28,12 @@ class PokemonMockDataSource {
         }
 
     fun types() = listOf(
-        Type(1, "Fairy"),
-        Type(2, "Normal"),
-        Type(3, "Electric"),
-        Type(4, "Water"),
-        Type(5, "Fire"),
-        Type(6, "Grass")
+        Type("1", "fairy"),
+        Type("2", "normal"),
+        Type("3", "electric"),
+        Type("4", "water"),
+        Type("5", "fire"),
+        Type("6", "grass")
     )
 
 
@@ -42,12 +42,11 @@ class PokemonMockDataSource {
             "1",
             "Bulbasaur",
             "001",
-            listOf(Type(6, "Grass")),
+            listOf(Type("6", "grass")),
             "Bulbasaur",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+            listOf(Stat("speed", 35))
         )
 
     private fun charmander() =
@@ -55,11 +54,11 @@ class PokemonMockDataSource {
             "2",
             "Charmander",
             "002",
-            listOf(Type(5, "Fire")),
+            listOf(Type("5", "fire")),
             "Charmander description",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
+            listOf(Stat("speed", 35)),
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
         )
 
@@ -68,11 +67,11 @@ class PokemonMockDataSource {
             "3",
             "Squirtle",
             "003",
-            listOf(Type(4, "Water")),
+            listOf(Type("4", "water")),
             "Squirtle description",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
+            listOf(Stat("speed", 35)),
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
         )
 
@@ -81,11 +80,11 @@ class PokemonMockDataSource {
             "4",
             "Pikachu",
             "004",
-            listOf(Type(3, "Electric")),
+            listOf(Type("3", "electric")),
             "Pikachu description",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
+            listOf(Stat("speed", 35)),
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
         )
 
@@ -94,11 +93,11 @@ class PokemonMockDataSource {
             "5",
             "Evee",
             "005",
-            listOf(Type(2, "Normal")),
+            listOf(Type("2", "normal")),
             "Evee description",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
+            listOf(Stat("speed", 35)),
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
         )
 
@@ -107,11 +106,11 @@ class PokemonMockDataSource {
             "6",
             "Clefairy",
             "006",
-            listOf(Type(1, "Fairy")),
+            listOf(Type("1", "fairy")),
             "Clefairy description",
             "0.7m",
             "6.9kg",
-            listOf(Stat("Speed", 35)),
+            listOf(Stat("speed", 35)),
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
         )
 }

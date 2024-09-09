@@ -47,5 +47,5 @@ fun TypeFilterPill(
 @Preview
 @Composable
 fun TypeFilterPillPreview() {
-    TypeFilterPill(type = Type(1, "Fairy", isActive = true), onTypeClick = {})
+    TypeFilterPill(type = Type("1", "Fairy", isActive = true), onTypeClick = {})
 }

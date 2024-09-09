@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.javy.pokedex.model.ui.Pokemon
 import com.javy.pokedex.ui.common.ErrorState
 import com.javy.pokedex.ui.common.LoadingIndicator
@@ -19,7 +19,7 @@ import com.javy.pokedex.ui.common.TypeFilterPill
 fun PokemonList(
     onPokemonSelected: (Pokemon) -> Unit
 ) {
-    val viewModel: PokemonListViewModel = viewModel(key = "pokemonList")
+    val viewModel: PokemonListViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
     with(uiState) {

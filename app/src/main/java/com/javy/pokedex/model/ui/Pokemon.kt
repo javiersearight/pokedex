@@ -11,20 +11,23 @@ import com.javy.pokedex.ui.theme.Water
 data class Pokemon(
     val id: String,
     val name: String,
-    val number: String,
-    val types: List<Type>,
-    val description: String,
-    val height: String,
-    val weight: String,
-    val stats: List<Stat>,
-    val imageUrl: String = ""
+    val number: String = "",
+    val types: List<Type> = emptyList(),
+    val description: String = "",
+    val height: String = "",
+    val weight: String = "",
+    val stats: List<Stat> = emptyList(),
+    val imageUrl: String? = null
 ) {
-    val accentColor: Color = when (types[0].name) {
-        "Grass" -> Grass
-        "Fire" -> Fire
-        "Water" -> Water
-        "Electric" -> Electric
-        "Poison" -> Poison
-        else -> Other
-    }
+    val accentColor: Color =
+        if (types.isNotEmpty()) {
+            when (types[0].name) {
+                "grass" -> Grass
+                "fire" -> Fire
+                "water" -> Water
+                "electric" -> Electric
+                "poison" -> Poison
+                else -> Other
+            }
+        } else Other
 }

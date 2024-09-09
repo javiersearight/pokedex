@@ -1,7 +1,7 @@
 package com.javy.pokedex.model.ui
 
 data class Type(
-    val id: Int = 0,
+    val id: String = "",
     val name: String = "",
     val isActive: Boolean = false
 )

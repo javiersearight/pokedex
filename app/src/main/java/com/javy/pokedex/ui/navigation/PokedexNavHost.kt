@@ -1,6 +1,7 @@
 package com.javy.pokedex.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.javy.pokedex.ui.navigation.Route.POKEDEX_SCREEN
@@ -20,7 +21,8 @@ fun PokedexNavHost() {
         navController = navController,
         startDestination = POKEDEX_SCREEN
     ) {
-        slideInOutComposable(route = POKEDEX_SCREEN) {
+        slideInOutComposable(route = POKEDEX_SCREEN) { foo: NavBackStackEntry ->
+//            val viewModel = hiltViewModel<PokedexViewModel>()
             PokedexScreen(
                 onPokemonSelected = {
                     navController.navigate(

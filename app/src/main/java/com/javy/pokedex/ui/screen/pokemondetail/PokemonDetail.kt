@@ -14,7 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.javy.pokedex.ui.common.ErrorState
 import com.javy.pokedex.ui.common.LoadingIndicator
 import com.javy.pokedex.ui.screen.pokedex.PokemonCard
@@ -24,7 +24,7 @@ import com.javy.pokedex.ui.screen.pokedex.PokemonListEmpty
 fun PokemonDetail(
     id: String
 ) {
-    val viewModel: PokemonDetailViewModel = viewModel(key = "pokemonDetail")
+    val viewModel: PokemonDetailViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(true) {
