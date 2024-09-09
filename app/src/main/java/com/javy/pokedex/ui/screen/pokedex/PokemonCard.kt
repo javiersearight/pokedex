@@ -5,8 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
@@ -29,7 +29,7 @@ import com.javy.pokedex.ui.common.TypeFilterPill
 @Composable
 fun PokemonCard(
     pokemon: Pokemon,
-    onPokemonClick: (Pokemon) -> Unit = {}
+    onPokemonClick: (Pokemon) -> Unit = {},
 ) {
     Card(
         modifier = Modifier
@@ -44,7 +44,7 @@ fun PokemonCard(
         ) {
             Column {
                 val modifier = Modifier
-                    .height(150.dp)
+                    .defaultMinSize(minHeight = 150.dp)
                     .fillMaxWidth()
                 if (pokemon.imageUrl == null) {
                     Image(
@@ -72,7 +72,7 @@ fun PokemonCard(
                 BaseText(text = pokemon.number)
                 Row {
                     for (type in pokemon.types) {
-                        TypeFilterPill(type)
+                        TypeFilterPill(type = type, enableAccent = true)
                     }
                 }
             }

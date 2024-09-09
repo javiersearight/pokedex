@@ -21,9 +21,10 @@ import com.javy.pokedex.ui.theme.White
 @Composable
 fun TypeFilterPill(
     type: Type,
-    onTypeClick: (Type) -> Unit = {}
+    onTypeClick: (Type) -> Unit = {},
+    enableAccent: Boolean = false
 ) {
-    val backgroundColor = if (type.isActive) Blue else White
+    val backgroundColor = if(enableAccent) type.accentColor else if (type.isActive) Blue else White
     val textColor = if (type.isActive) White else Black
     val borderColor = if (type.isActive) Black else DarkBlue
 
