@@ -1,5 +1,6 @@
 package com.javy.pokedex.data.repository
 
+import com.javy.pokedex.data.remote.qraphql.PokemonRemoteGraphQLDataSource
 import com.javy.pokedex.data.remote.rest.PokemonRemoteRESTDataSource
 import com.javy.pokedex.model.ui.Pokemon
 import com.javy.pokedex.model.ui.Type
@@ -8,7 +9,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class PokemonRepository @Inject constructor(private val dataSource: PokemonRemoteRESTDataSource) {
+class PokemonRepository @Inject constructor(
+    private val dataSource: PokemonRemoteRESTDataSource,
+    private val dataSourceGraphQL: PokemonRemoteGraphQLDataSource
+) {
 
     suspend fun pokemon(): Flow<List<Pokemon>> =
         dataSource.getPokemon()

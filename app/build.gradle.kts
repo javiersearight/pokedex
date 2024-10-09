@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.kapt)
     alias(libs.plugins.hilt.kotlin.android)
+    alias(libs.plugins.apollo.graphql)
 }
 
 android {
@@ -44,6 +45,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+    apollo {
+        service("service") {
+            packageName.set("com.javy.pokedex")
+        }
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -74,6 +80,8 @@ dependencies {
     implementation(libs.kotlin.coroutines.android)
     implementation (libs.retrofit)
     implementation (libs.converter.moshi)
+
+    implementation(libs.apollo.runtime)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -33,8 +33,8 @@ class PokemonDetailViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(pokemon = pokemon, isLoading = false)
                 }
-            }.onFailure {
-                val errorMessage = it.message
+            }.onFailure { e: Throwable ->
+                val errorMessage = e.message
                 _uiState.update {
                     it.copy(errorMessage = errorMessage, isLoading = false)
                 }
@@ -42,7 +42,6 @@ class PokemonDetailViewModel @Inject constructor(
         }
     }
 }
-
 
 data class PokemonDetailUIState(
     val pokemon: Pokemon? = null,

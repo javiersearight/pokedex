@@ -18,4 +18,7 @@ data class Pokemon(
         if (types.isNotEmpty()) {
             types[0].accentColor
         } else Other
+
+    val hasCompleteModel: Boolean
+        get() = number.isNotEmpty()
 }

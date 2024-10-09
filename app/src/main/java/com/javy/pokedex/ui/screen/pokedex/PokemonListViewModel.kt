@@ -1,5 +1,6 @@
 package com.javy.pokedex.ui.screen.pokedex
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.javy.pokedex.data.repository.PokemonRepository
@@ -38,10 +39,13 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                     _uiState.update {
                         it.copy(pokemon = pokemon, isLoading = false)
                     }
-                    fetchPokemonModels()
+                    if (_uiState.value.requiresFullModels) {
+                        fetchPokemonModels()
+                    }
                 }
-            }.onFailure {
-                val errorMessage = it.message
+            }.onFailure { e: Throwable ->
+                val errorMessage = e.message
+                Log.e("pokedex fetch pokemon", errorMessage, e)
                 _uiState.update {
                     it.copy(errorMessage = errorMessage, isLoading = false)
                 }
@@ -65,8 +69,8 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                         it.copy(pokemon = pokemonList)
                     }
                 }
-            }.onFailure {
-                val errorMessage = it.message
+            }.onFailure { e: Throwable ->
+                val errorMessage = e.message
                 _uiState.update {
                     it.copy(errorMessage = errorMessage, isLoading = false)
                 }
@@ -85,8 +89,8 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                     }
                     fetchPokemonModels()
                 }
-            }.onFailure {
-                val errorMessage = it.message
+            }.onFailure { e: Throwable ->
+                val errorMessage = e.message
                 _uiState.update {
                     it.copy(errorMessage = errorMessage, isLoading = false)
                 }
@@ -125,8 +129,8 @@ class PokemonListViewModel @Inject constructor(private val pokemonRepository: Po
                     }
                     fetchPokemonModels()
                 }
-            }.onFailure {
-                val errorMessage = it.message
+            }.onFailure { e: Throwable ->
+                val errorMessage = e.message
                 _uiState.update {
                     it.copy(errorMessage = errorMessage, isLoading = false)
                 }
@@ -146,4 +150,7 @@ data class PokemonListUIState(
 
     val hasError: Boolean
         get() = errorMessage != null
+
+    val requiresFullModels: Boolean
+        get() = pokemon.firstOrNull()?.hasCompleteModel != true
 }

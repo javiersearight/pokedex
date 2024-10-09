@@ -1,0 +1,25 @@
+query GetPokemon {
+    pokemon_v2_pokemon(offset: 0, limit: 20) {
+        id
+        name
+        order
+        base_experience
+        weight
+        height
+        pokemon_v2_pokemontypes {
+            pokemon_v2_type {
+                id
+                name
+            }
+        }
+        pokemon_v2_pokemonsprites {
+           sprites
+        }
+        pokemon_v2_pokemonstats {
+            base_stat
+            pokemon_v2_stat {
+                name
+            }
+        }
+    }
+}

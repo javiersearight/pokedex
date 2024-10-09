@@ -1,0 +1,5 @@
+schema: schema.graphqls
+documents: '**/*.graphqls'
+extensions:
+  endpoints:
+    default: https://beta.pokeapi.co/graphql/v1beta
