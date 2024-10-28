@@ -6,18 +6,18 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
-activityCompose = "1.9.2"
-composeBom = "2024.09.02"
-navigation = "2.8.1"
+activityCompose = "1.9.3"
+composeBom = "2024.10.00"
+navigation = "2.8.3"
 coil = "2.7.0"
-hilt = "2.52"
+hilt = "2.48.1"
 retrofit = "2.9.0"
+logging-interceptor = "4.12.0"
 coroutines = "1.8.1"
-moshi = "1.15.0"
 converterMoshi = "2.9.0"
 androidx-hilt = "1.2.0"
 apollo-graphql = "4.0.0"
-ksp = "1.8.10-1.0.9"
+ksp = "1.9.0-1.0.13"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +41,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
@@ -49,7 +50,7 @@ apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 hilt-kotlin-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 apollo-graphql = { id = "com.apollographql.apollo", version.ref = "apollo-graphql" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
